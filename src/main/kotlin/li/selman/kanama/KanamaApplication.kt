@@ -7,5 +7,6 @@ import org.springframework.boot.runApplication
 class KanamaApplication
 
 fun main(args: Array<String>) {
-	runApplication<KanamaApplication>(*args)
+    @Suppress("SpreadOperator")
+    runApplication<KanamaApplication>(*args)
 }
