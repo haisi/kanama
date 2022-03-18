@@ -47,6 +47,14 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+tasks.withType<JavaCompile>().configureEach {
+	options.encoding = "UTF-8"
+}
+
+tasks.withType<Javadoc>().configureEach {
+	options.encoding = "UTF-8"
+}
+
 // See https://github.com/spring-io/initializr/issues/922
 val snippetsDir by extra { file("build/generated-snippets") }
 
