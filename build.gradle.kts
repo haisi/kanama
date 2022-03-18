@@ -47,11 +47,16 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+// See https://github.com/spring-io/initializr/issues/922
+val snippetsDir by extra { file("build/generated-snippets") }
+
 tasks.test {
 	outputs.dir(snippetsDir)
 }
 
 tasks.asciidoctor {
 	inputs.dir(snippetsDir)
-	dependsOn(test)
+	dependsOn(tasks.test)
+	// Define variable "snippets" to access the generated docs from /src/docs/asciidoc
+	attributes(mapOf("snippets" to "${project.buildDir}/generated-snippets"))
 }
